@@ -1,5 +1,6 @@
-# AWS ECS Fargate - FLuent-Bit
+# AWS ECS Fargate - Fluent-Bit
 
+![High-Level-Architecture](images/arch.png)
 
 ### This is a sample project to deploy the fluent-bit on AWS ECS Fargate type. 
 - Fluent bit image is dynamic, once created you can just run this image for different customer as long as you have specified the right bucket and folder while running the container.
