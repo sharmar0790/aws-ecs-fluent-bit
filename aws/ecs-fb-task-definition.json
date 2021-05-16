@@ -9,7 +9,7 @@
         "logDriver": "awslogs",
         "secretOptions": null,
         "options": {
-          "awslogs-group": "/ecs/FB-APP",
+          "awslogs-group": "/ecs/FB-Task",
           "awslogs-region": "eu-west-1",
           "awslogs-stream-prefix": "ecs"
         }
@@ -36,7 +36,7 @@
       "dnsServers": null,
       "mountPoints": [
         {
-          "readOnly": false,
+          "readOnly": null,
           "containerPath": "/usr/local/tomcat/logs",
           "sourceVolume": "app_logs"
         }
@@ -74,7 +74,7 @@
         "logDriver": "awslogs",
         "secretOptions": null,
         "options": {
-          "awslogs-group": "/ecs/FB-APP",
+          "awslogs-group": "/ecs/FB-Task",
           "awslogs-region": "eu-west-1",
           "awslogs-stream-prefix": "ecs"
         }
@@ -90,7 +90,16 @@
       "command": null,
       "linuxParameters": null,
       "cpu": 0,
-      "environment": [],
+      "environment": [
+        {
+          "name": "BUCKET_NAME",
+          "value": "fluent-bit-ecs-test"
+        },
+        {
+          "name": "CUSTOMER_FOLDER",
+          "value": "customer-1"
+        }
+      ],
       "resourceRequirements": null,
       "ulimits": null,
       "dnsServers": null,
@@ -108,7 +117,7 @@
       "memoryReservation": null,
       "volumesFrom": [],
       "stopTimeout": null,
-      "image": "rv0718/fb:latest",
+      "image": "rv0718/fb:4",
       "startTimeout": null,
       "firelensConfiguration": null,
       "dependsOn": null,
@@ -125,7 +134,7 @@
       "dockerLabels": null,
       "systemControls": null,
       "privileged": null,
-      "name": "fluent-bit"
+      "name": "fb"
     }
   ],
   "placementConstraints": [],
@@ -135,8 +144,8 @@
     "EC2",
     "FARGATE"
   ],
-  "taskDefinitionArn": "arn:aws:ecs:eu-west-1:035864429412:task-definition/FB-APP:9",
-  "family": "FB-APP",
+  "taskDefinitionArn": "arn:aws:ecs:eu-west-1:035864429412:task-definition/FB-Task:2",
+  "family": "FB-Task",
   "requiresAttributes": [
     {
       "targetId": null,
@@ -187,7 +196,7 @@
   ],
   "networkMode": "awsvpc",
   "cpu": "512",
-  "revision": 9,
+  "revision": 2,
   "status": "ACTIVE",
   "inferenceAccelerators": null,
   "proxyConfiguration": null,
