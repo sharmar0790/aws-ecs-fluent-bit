@@ -3,6 +3,7 @@ package com.dividendo.istio.user.controller;
 
 import com.dividendo.istio.user.domain.User;
 import com.dividendo.istio.user.service.UserService;
+import org.apache.commons.lang3.exception.ExceptionUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -76,5 +77,19 @@ public class UserController {
                     }
                 }
         );
+    }
+
+    @GetMapping("exception")
+    public void exception() {
+
+        try{
+            int x = 10/0;
+        }catch (Exception e){
+            String stacktrace = ExceptionUtils.getStackTrace(e);
+
+            LOGGER.error("Caught error while dividing the number : {} ",e.getMessage());
+            LOGGER.error("Caught error while dividing the number2  >>>> : {} ",stacktrace);
+            throw new RuntimeException("Caught error while dividing the number",e);
+        }
     }
 }

@@ -9,4 +9,5 @@ yum -y update && \
     #rm awscliv2.zip && \
     chmod +x /entrypoint.sh && \ 
     mkdir -p /usr/local/tomcat/logs && \
+    yum clean all && \
     rm -rf /var/cache/yum
