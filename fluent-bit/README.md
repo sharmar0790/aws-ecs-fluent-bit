@@ -1,4 +1,4 @@
-# FLUEBT_BIT AWS
+# FLUENT_BIT AWS
 
 ### Build Image
 
