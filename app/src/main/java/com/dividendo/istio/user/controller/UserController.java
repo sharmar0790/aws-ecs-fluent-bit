@@ -31,6 +31,11 @@ public class UserController {
     @Autowired
     UserService userService;
 
+    @GetMapping("/")
+    public String healthz() {
+        return "{\"Status\" : \"I am healthy\"}";
+    }
+
     @GetMapping("users")
     public Collection<User> getAllUsers() {
 
